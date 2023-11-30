@@ -84,7 +84,6 @@ jobs:
           uses: actions/download-artifact@v3
           with:
             name: test-report
-            path: test.json
         - name: Output information
           run: |
             echo "Somethign went wrong"
