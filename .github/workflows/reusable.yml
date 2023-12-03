@@ -1,7 +1,7 @@
 name: Re-Usable workflow Build
 on: workflow_call
 jobs:
-    build:
+    reusable-build:
         runs-on: ubuntu-latest
         steps:
         - name: Get code
