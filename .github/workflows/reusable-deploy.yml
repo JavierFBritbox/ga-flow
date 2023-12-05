@@ -7,6 +7,10 @@ on:
         required: false
         default: dist
         type: string
+    secrets:
+      some-secret:
+        description: Whatever is secret
+        required: false
 jobs:
     reusable-deploy:
         runs-on: ubuntu-latest
@@ -17,3 +21,5 @@ jobs:
             name: ${{ inputs.artifact-name }}
         - name: Deploy
           run: ls -alR
+        - name: Show secret
+          run: echo ${{ secrets.some-secret }}
