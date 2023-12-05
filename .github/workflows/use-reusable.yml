@@ -52,6 +52,7 @@ jobs:
       artifact-name: dist-files
     secrets:
       some-secret: ${{ secrets.some-secret }}
+    #secrets: inherit
   report:
       needs: [lint, deploy]
       if: failure()

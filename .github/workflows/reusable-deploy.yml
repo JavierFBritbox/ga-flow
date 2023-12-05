@@ -7,6 +7,10 @@ on:
         required: false
         default: dist
         type: string
+    outputs:
+      result:
+        description: Output of the workflows
+        value:
     secrets:
       some-secret:
         description: Whatever is secret
@@ -23,3 +27,5 @@ jobs:
           run: ls -alR
         - name: Show secret
           run: echo ${{ secrets.some-secret }}
+        - name: Set result Output
+          run: echo "result=success" >> GITHUB-OUTPUT
