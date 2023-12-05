@@ -10,13 +10,15 @@ on:
     outputs:
       result:
         description: Output of the workflows
-        value:
+        value: ${{ jobs.reusable-deploy.outputs.outcome }}
     secrets:
       some-secret:
         description: Whatever is secret
         required: false
 jobs:
     reusable-deploy:
+        outputs:
+          outcome: ${{ steps.set-result.outputs.step-result}}
         runs-on: ubuntu-latest
         steps:
         - name: Download Artifact
@@ -25,7 +27,8 @@ jobs:
             name: ${{ inputs.artifact-name }}
         - name: Deploy
           run: ls -alR
-        - name: Show secret
+        - name: Show secret and Outputs
           run: echo ${{ secrets.some-secret }}
         - name: Set result Output
+          id: set-result
           run: echo "result=success" >> GITHUB-OUTPUT

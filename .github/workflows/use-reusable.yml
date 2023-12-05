@@ -53,6 +53,12 @@ jobs:
     secrets:
       some-secret: ${{ secrets.some-secret }}
     #secrets: inherit
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: echo ${{ needs.deploy.result }}
   report:
       needs: [lint, deploy]
       if: failure()
