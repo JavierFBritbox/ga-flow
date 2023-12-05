@@ -1,0 +1,12 @@
+name: Re-Usable workflow Deploy
+on: workflow_call
+jobs:
+    reusable-build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Download Artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: dist-files
+        - name: Deploy
+          run: ls -alR
